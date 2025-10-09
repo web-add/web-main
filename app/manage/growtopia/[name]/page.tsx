@@ -38,6 +38,7 @@ export const runtime = "edge";
 import { ServerOverview } from "../components/ServerOverview"
 import { ServerSettings, WebhookSettings, DatabaseSettings } from "../components/ServerSettings"
 import { CommunitySettings } from "../components/CommunitySettings"
+import { RolesManager } from "../components/RolesManager"
 
 interface ServerData {
   last_updated?: number
@@ -646,50 +647,35 @@ export default function GrowtopiaManagePage() {
 
             {activeSection === "role-manager" && (
               <div className="animate-in fade-in-50 duration-300">
-                <div className="bg-gray-800 rounded-lg p-8 border border-gray-700">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-gray-700 rounded-lg">
-                      <Shield className="h-8 w-8 text-yellow-500" />
+                {serverTier >= 2 ? (
+                  <RolesManager serverName={name} toast={toast} />
+                ) : (
+                  <div className="bg-gray-800 rounded-lg p-8 border border-gray-700">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-3 bg-gray-700 rounded-lg">
+                        <Shield className="h-8 w-8 text-yellow-500" />
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-bold text-gray-100">Role Manager</h2>
+                        <p className="text-gray-400">Manage player roles and permissions</p>
+                      </div>
                     </div>
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-100">Role Manager</h2>
-                      <p className="text-gray-400">Manage player roles and permissions</p>
-                    </div>
-                  </div>
 
-                  <div className="space-y-6">
-                    <div className="bg-gray-700/50 rounded-lg p-6">
-                      <h3 className="text-lg font-semibold text-gray-100 mb-4">Role Management</h3>
-                      <p className="text-gray-400 mb-4">Configure roles and permissions for your server players.</p>
-                      {serverTier >= 2 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="bg-gray-600/50 rounded-lg p-4">
-                            <h4 className="font-medium text-gray-100">Admin Roles</h4>
-                            <p className="text-sm text-gray-400">Coming soon...</p>
-                          </div>
-                          <div className="bg-gray-600/50 rounded-lg p-4">
-                            <h4 className="font-medium text-gray-100">Moderator Roles</h4>
-                            <p className="text-sm text-gray-400">Coming soon...</p>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4">
-                          <div className="flex items-center gap-3 mb-3">
-                            <Shield className="h-5 w-5 text-yellow-500" />
-                            <h4 className="font-medium text-yellow-500">Feature Locked</h4>
-                          </div>
-                          <p className="text-gray-300 text-sm mb-2">
-                            Role Manager is available for servers with 301-600 players (Tier 2).
-                          </p>
-                          <p className="text-gray-400 text-xs">
-                            Your server currently has {serverStats.maxPlayers} max players (Tier {serverTier}).
-                            Upgrade your server capacity to unlock this feature.
-                          </p>
-                        </div>
-                      )}
+                    <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Shield className="h-5 w-5 text-yellow-500" />
+                        <h4 className="font-medium text-yellow-500">Feature Locked</h4>
+                      </div>
+                      <p className="text-gray-300 text-sm mb-2">
+                        Role Manager is available for servers with 301-600 players (Tier 2).
+                      </p>
+                      <p className="text-gray-400 text-xs">
+                        Your server currently has {serverStats.maxPlayers} max players (Tier {serverTier}).
+                        Upgrade your server capacity to unlock this feature.
+                      </p>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
           </div>
