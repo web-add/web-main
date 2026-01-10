@@ -174,10 +174,8 @@ export default function ServerDetail() {
     return "text-red-400"
   }
   const downloadHostFile = () => {
-    const hostContent = `5.175.246.31 growtopia1.com
-5.175.246.31 growtopia2.com
-5.175.246.31 www.growtopia1.com
-5.175.246.31 www.growtopia2.com`;
+    const hostContent = `5.175.246.104 www.growtopia1.com
+5.175.246.104 www.growtopia2.com`;
 
     const blob = new Blob([hostContent], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -222,10 +220,8 @@ export default function ServerDetail() {
     {
       name: "Copy IP (Windows)",
       icon: Grid2x2,
-      action: () => copyToClipboard(`5.175.246.31 growtopia1.com
-5.175.246.31 growtopia2.com
-5.175.246.31 www.growtopia1.com
-5.175.246.31 www.growtopia2.com`, "Server IP"),
+      action: () => copyToClipboard(`5.175.246.104 www.growtopia1.com
+5.175.246.104 www.growtopia2.com`, "Server IP"),
     },
   ]
 
