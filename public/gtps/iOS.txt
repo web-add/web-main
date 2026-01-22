@@ -1,5 +1,4 @@
 [General]
-bypass-system = true
 
 [Rule]
 FINAL,DIRECT
