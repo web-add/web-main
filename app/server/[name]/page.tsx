@@ -215,7 +215,7 @@ export default function ServerDetail() {
     {
       name: "Copy Surge5",
       icon: Apple,
-      action: () => copyToClipboard(`https://xovan.fun/gtps/iOS`, "Surge5 link"),
+      action: () => copyToClipboard(`https://xovan.fun/gtps/iOS.txt`, "Surge5 link"),
     },
     {
       name: "Copy IP (Windows)",
